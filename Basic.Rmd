@@ -1,0 +1,101 @@
+---
+title: "Basic Problems on FUNCTION"
+author: "Gunjan Shah"
+date: "March 9, 2019"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## I am posting several basic problem set with their answers and explaination.
+
+#Problem 1
+```{r}
+cube <- function(x, n) {
+        x^3
+}
+# Now what will be the answer for cube(3)?
+cube(3)
+```
+## Although cube is a function of variable x and n and nowhere the variable n is called, the function will not generate any error as it is not necessary to have all the variables to be used. 
+
+#Problem2
+```{r}
+x <- 1:10
+if(x > 5) {
+        x <- 0
+}
+# What will be the warning here?
+```
+# Here x is a vector of length 10 and 'if' condition can only test a single logical statement.
+
+#Problem3
+```{r}
+f <- function(x) {
+        g <- function(y) {
+                y + z
+        }
+        z <- 4
+        x + g(x)
+}
+z<-10 #Notice that I did assign the value for z in the function f
+f(3)
+# What will be the value of f(3)? 
+# So you need to think what will be the value of z, 4 or 10?
+```
+# R uses the method of lexical scoping(static scoping), so the value of z here will be the value that we assigned in the parent function. Although if you want to assign any value strictly then you can define it as a global value initially.
+
+#Problem4
+```{r}
+x <- 5
+y <- if(x < 3) {
+        NA
+} else {
+        10
+}
+y
+# What value will be printed for y ?
+```
+# Here x is a vector of length 1. The if statement hence will be tested logically and value will be assigned in the variable y accordingly.
+
+#Problem5
+```{r}
+h <- function(x, y = NULL, d = 3L) {
+        z <- cbind(x, d)
+        if(!is.null(y))
+                z <- z + y
+        else
+                z <- z + f
+        g <- x + y / z
+        if(d == 3L)
+                return(g)
+        g <- g + 10
+        g
+}
+# Which symbol in the above function is a free variable?
+```
+# This is again a basic question to assess your basic knowledge regarding the environment of R. Read more on this topic and try to justify that why f is the free variable here.
+
+#Problem6
+#What is an environment in R?
+#A collection of symbol/Pair values.
+
+#Problem7
+#The R language uses what type of scoping rule for resolving free variables?
+#Lexical scoping or static scoping. Do try to read the difference between lexical vs dynamic scoping.
+
+#Problem8
+#How are free variables in R functions resolved?
+#The values of free variables are searched for in the environment in which the function was defined
+
+#Problem9
+#What is one of the consequences of the scoping rules used in R?
+#All objects must be stored in memory
+
+#Problem10
+#In R, what is the parent frame?
+#It is the environment in which a function was called.
