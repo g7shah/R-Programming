@@ -1,2 +1,2 @@
 # R-Programming
-Basic Questions and Explainations
+Basic Questions and Explanations
